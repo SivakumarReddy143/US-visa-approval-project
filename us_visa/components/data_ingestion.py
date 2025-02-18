@@ -34,6 +34,7 @@ class DataIngestion:
             raise USvisaException(e,sys)
     def split_data_as_train_test(self,dataframe:DataFrame):
         try:
+            
             train_data,test_data=train_test_split(dataframe,test_size=self.data_ingestion_config.train_test_split_ratio)
             os.makedirs(self.data_ingestion_config.data_ingested_dir,exist_ok=True)
             train_data.to_csv(self.data_ingestion_config.train_file_path,index=False,header=True)
